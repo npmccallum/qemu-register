@@ -10,9 +10,9 @@ Enter `npmccallum/qemu-register`. This Docker image enables the host to run
 **unmodified** foreign-architecture Docker images. Want an example?
 
 ```sh
-$ sudo docker run -it --rm --privileged npmccallum/qemu-register
-$ sudo docker run -it --rm aarch64/busybox uname -a
-Linux 7643af1fa898 5.1.18-300.fc30.x86_64 #1 SMP Mon Jul 15 15:42:34 UTC 2019 aarch64 GNU/Linux
+$ sudo docker run --rm --privileged npmccallum/qemu-register
+$ sudo docker run --rm aarch64/busybox uname -m
+aarch64
 ```
 
 Yup! That's it!
@@ -33,6 +33,10 @@ when you load an `aarch64` binary from the `aarch64/busybox` Docker image
 above, the `qemu-user-aarch64` emulation binary is used from the
 `npmccallum/qemu-register` Docker image. Therefore, foreign-architecture
 images can run unmodified with this strategy.
+
+The `npmccallum/qemu-register` Docker image is built with Fedora since
+they are the only major distro that has chosen this configuration by
+default.
 
 ### Security Implications
 
